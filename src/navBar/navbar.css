@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Gothic';
+    src: url('../assets/font/Gotham\ Medium\ Regular.ttf');
+}
+
+#navBar {
+    width: 15.5rem;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: 'Gothic', sans-serif;
+    gap: 1rem;
+}
+
+#logoContainer {
+    color: white;
+    width: 8rem;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem;
+}
+
+#logo {
+    width: 8rem;
+    height: auto;
+}
+
+.navContainer {
+    margin-left: 1.5rem;
+    color: white;
+    border: 2px solid red;
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.navButton {
+    width: 7rem;
+    height: 1.5rem;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .82rem;
+    color: #B3B3B3;
+}
+
+.navButton:hover {
+    width: 7rem;
+    height: 1.5rem;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .82rem;
+    color: white;
+    cursor: pointer;
+}

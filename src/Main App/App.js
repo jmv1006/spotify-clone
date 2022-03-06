@@ -1,14 +1,18 @@
+import NavBar from "../navBar/navBar";
 import { useEffect } from "react";
-import getAlbum from "../spotifyAPI";
+import getPlaylist from "../spotifyAPI";
+import './app.css'
 
 const App = () => {
   
   useEffect(() => {
-    getAlbum();
-  }, [])
+    getPlaylist('37i9dQZF1DX2apWzyECwyZ').then((playlist) => console.log(playlist));
+  }, []);
 
   return(
-    <div>App</div>
+    <div id='mainApp'>
+      <NavBar></NavBar>
+    </div>
   )
 }
 
