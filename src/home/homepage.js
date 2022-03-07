@@ -4,6 +4,7 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import CategoryDisplay from '../categoryDisplay/categoryDisplay';
 import './homepage.css'
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
     const [categories, setCategories] = useState([]);
@@ -29,11 +30,9 @@ const Home = () => {
     );
 
     return(
-        <div id='homePageContainer'>
+        <div id='pageContainer'>
             <Header />
-            <div id='mainContentWrapper'>
-               {categoriesToDisplay}
-            </div>
+            <Outlet context={[categories, setCategories]} />
             <Footer />
         </div>
     )

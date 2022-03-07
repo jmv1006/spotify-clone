@@ -3,24 +3,28 @@
     src: url('../assets/font/Gotham\ Medium\ Regular.ttf');
 }
 
-#homePageContainer {
+#pageContainer {
     width: calc(100% - 15rem);
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+#homePageContainer {
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+     box-sizing: border-box; 
+    width: 100%;
+    height: auto;
     background-color: #1D1D1D;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    overflow-y: auto;
-}
-
-#mainContentWrapper {
-    max-width: 95%;
-    height: auto;
     font-family: 'Gothic', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 1rem;
+    padding: 1rem;
 }

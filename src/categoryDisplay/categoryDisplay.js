@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './categorydisplay.css'
 import getPlaylist from '../spotifyAPI';
+import { Link } from 'react-router-dom';
 
 const CategoryDisplay = (props) => {
 
@@ -20,7 +21,8 @@ const CategoryDisplay = (props) => {
 
     }, []);
 
-    const playlistsToDisplay = playlists.map((playlist, index) => 
+    const playlistsToDisplay = playlists.map((playlist, index) =>
+        <Link to={`/playlist/${playlist.id}`} key={index}>
         <div className='playlistCard' key={index}>
             <div className='playlistImgContainer'>
                 <img className='playlistImg' src={playlist.image}></img>
@@ -30,6 +32,7 @@ const CategoryDisplay = (props) => {
                 <div className='playlistDesc'>{playlist.description}</div>
             </div>
         </div>
+        </Link> 
     );
 
     return(

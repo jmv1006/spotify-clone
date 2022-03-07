@@ -1,11 +1,10 @@
 .playlistsDisplayContainer {
-    width: auto;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 1.25rem;
     gap: .5rem;
     overflow: auto;
 }
@@ -35,6 +34,7 @@
     background-color: #191818;
     padding: .5rem;
     border-radius: 1rem;
+    gap: .5rem;
 }
 .playlistImgContainer {
     width: 95%;
