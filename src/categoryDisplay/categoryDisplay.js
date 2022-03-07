@@ -8,8 +8,6 @@ const CategoryDisplay = (props) => {
 
     useEffect(() => {
         const playlists = props.playlists;
-        console.log(playlists);
-        
         
         const fetchPlaylistInfo = playlists.map((playlist) => {
            addToState(playlist);

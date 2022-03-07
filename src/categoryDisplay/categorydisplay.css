@@ -22,6 +22,7 @@
     justify-content: space-around;
     align-items: center;
     padding: .25rem;
+    gap: 1.5rem;
 }
 
 .playlistCard {

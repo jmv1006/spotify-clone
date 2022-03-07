@@ -39,6 +39,7 @@ async function addADoc(name, playlists) {
     name: name,
     playlists: playlists
   });
+  
 };
 
 async function getCategories(db) {
