@@ -1,0 +1,88 @@
+@media only screen and (max-width: 800px) {
+    #topLinksContainer {
+        background-color: white;
+        display: none !important;
+    }
+}
+
+@font-face {
+    font-family: 'Gothic';
+    src: url('../assets/font/Gotham\ Medium\ Regular.ttf');
+}
+
+
+#headerContainer {
+    width: 100%;
+    min-height: 4rem;
+    background-color: #101010;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: 'Gothic', sans-serif;
+    position: sticky; top: 0;
+}
+
+#topLinksContainer {
+    color: white;
+    width: 25rem;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.25rem;
+    font-size: .78rem;
+}
+
+.topLink {
+    cursor: pointer;
+}
+
+.topLink:hover {
+    cursor: pointer;
+    font-size: .81rem;
+}
+
+#topButtonsContainer {
+    width: 16rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+#signUp {
+    color: white;
+    font-size: .72rem;
+    cursor: pointer;
+}
+
+#signUp:hover {
+    color: white;
+    font-size: .75rem;
+    cursor: pointer;
+}
+
+#login {
+    background-color: white;
+    width: 7.5rem;
+    height: 2.25rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .72rem;
+    cursor: pointer;
+}
+
+#login:hover {
+    background-color: white;
+    width: 7.7rem;
+    height: 2.4rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .75rem;
+    cursor: pointer;
+}
