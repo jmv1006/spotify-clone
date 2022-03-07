@@ -33,3 +33,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+
+async function getCategories(db) {
+  const categoriesRef = collection(db, "categories");
+  const getCategoryDocs = await getDocs(categoriesRef);
+  const categoriesRetrieved = getCategoryDocs.docs.map(category => category.data());
+  return categoriesRetrieved;
+}
+
+export { db, getCategories }

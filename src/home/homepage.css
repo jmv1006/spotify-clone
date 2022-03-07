@@ -17,10 +17,9 @@
 
 #mainContentWrapper {
     width: 96%;
-    min-height: 90rem;
+    min-height: 53rem;
     height: auto;
     border: 2px solid red;
-    color: white;
-    overflow-y: scroll;
+    overflow-y: auto;
     font-family: 'Gothic', sans-serif;
 }

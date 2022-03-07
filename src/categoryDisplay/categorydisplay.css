@@ -1,0 +1,65 @@
+.playlistsDisplayContainer {
+    border: 2px solid blue;
+    width: auto;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: .5rem;
+}
+
+.categoryTitle {
+    color: white;
+}
+
+.playlistCardsContainer {
+    height: 19rem;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: .25rem;
+}
+
+.playlistCard {
+    width: 14rem;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #191818;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+.playlistImgContainer {
+    width: 95%;
+    height: 12.5rem;
+}
+
+.playlistImg { 
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+}
+
+.playlistTitleAndDescContainer {
+    height: 3rem;
+    gap: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.playlistTitle {
+
+    color: white;
+}
+
+.playlistDesc {
+    height: auto;
+    font-size: .75rem;
+    color: #B3B3B3;
+}
