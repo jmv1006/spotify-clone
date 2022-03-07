@@ -17,7 +17,6 @@ const NavBar = () => {
             <div className='navContainer'>
                 <div className='navButton'>Create Playlist</div>
                 <div className='navButton'>Liked Songs</div>
-                <div className='navButton'>Your Episodes</div>
             </div>
         </div>
     )

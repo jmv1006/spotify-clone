@@ -33,7 +33,6 @@
 .navContainer {
     margin-left: 1.5rem;
     color: white;
-    border: 2px solid red;
     width: 10rem;
     display: flex;
     flex-direction: column;
@@ -43,9 +42,8 @@
 .navButton {
     width: 7rem;
     height: 1.5rem;
-    border: 2px solid blue;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: .82rem;
     color: #B3B3B3;
@@ -54,9 +52,8 @@
 .navButton:hover {
     width: 7rem;
     height: 1.5rem;
-    border: 2px solid blue;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: .82rem;
     color: white;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { db, getCategories } from '../firebase'
 import Header from '../header/header';
+import Footer from '../footer/footer';
 import CategoryDisplay from '../categoryDisplay/categoryDisplay';
 import './homepage.css'
 
@@ -33,6 +34,7 @@ const Home = () => {
             <div id='mainContentWrapper'>
                {categoriesToDisplay}
             </div>
+            <Footer />
         </div>
     )
 };
