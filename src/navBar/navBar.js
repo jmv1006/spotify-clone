@@ -1,5 +1,6 @@
 import './navbar.css';
 import logo from '../assets/images/spotifylogo.png';
+import { Link } from 'react-router-dom';
 
 
 const NavBar = () => {
@@ -7,10 +8,14 @@ const NavBar = () => {
     return(
         <div id='navBar'>
             <div id='logoContainer'>
-                <img id='logo' src={logo}></img>
+                <Link to='/'>
+                    <img id='logo' src={logo}></img>
+                </Link>
             </div>
             <div className='navContainer'>
-                <div className='navButton'>Home</div>
+                <Link to='/'>
+                    <div className='navButton'>Home</div>
+                </Link>
                 <div className='navButton'>Search</div>
                 <div className='navButton'>Your Library</div>
             </div>

@@ -1,0 +1,54 @@
+.track {
+    width: 99%;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Gothic', sans-serif;
+}
+
+.track:hover {
+    border: 1px solid gray;
+    width: 99%;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Gothic', sans-serif;
+    cursor: pointer;
+    opacity: .8;
+}
+
+.trackNum {
+    width: 1.5rem;
+    color: white;
+}
+.trackLeftSide {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.trackImgContainer {
+    width: 3rem;
+    height: 3rem;
+    background-size: cover;
+}
+
+.trackImg {
+    width: 100%;
+    height: auto;
+}
+
+.songTitle {
+    color: white;
+    width: auto;
+}
+
+.songArtists {
+    width: auto;
+    color: #B3B3B3;
+    font-size: .75rem;
+}

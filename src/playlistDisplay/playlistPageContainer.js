@@ -5,9 +5,7 @@ const PlaylistPageContainer = () => {
     const [categories, setCategories] = useOutletContext();
 
     return(
-        <div id='playlistPageContainer'>
-            <Outlet context={[categories, setCategories]}/>
-        </div>
+        <Outlet context={[categories, setCategories]}/>
     )
 }
 

@@ -22,7 +22,7 @@ const CategoryDisplay = (props) => {
     }, []);
 
     const playlistsToDisplay = playlists.map((playlist, index) =>
-        <Link to={`/playlist/${playlist.id}`} key={index}>
+        <Link to={`/playlist/${playlist.id}`} key={index} className='imgLink'>
         <div className='playlistCard' key={index}>
             <div className='playlistImgContainer'>
                 <img className='playlistImg' src={playlist.image}></img>

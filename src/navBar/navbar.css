@@ -28,6 +28,7 @@
 #logo {
     width: 8rem;
     height: auto;
+    cursor: pointer;
 }
 
 .navContainer {
