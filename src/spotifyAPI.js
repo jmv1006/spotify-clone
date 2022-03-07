@@ -13,6 +13,7 @@ function getPlaylist (playlistId) {
     return getPlaylist;
 };
 
+//Use this function for every category and set of playlists you want to add
 function sendPlaylistsToFirebase(ids, name) {
     const playlistIds = ids;
     const playlists = [];
@@ -25,19 +26,22 @@ function sendPlaylistsToFirebase(ids, name) {
         let tempPlaylist = {
             name: playlist.name,
             description: playlist.description,
-            image: playlist.images[0].url
+            image: playlist.images[0].url,
+            id: playlist.id
         }
 
         playlists.push(tempPlaylist);
 
         if(playlists.length === playlistIds.length) {
-            addADoc('Puro Latino', playlists);
+            addADoc(`${name}`, playlists);
         }
     };
 };
 
-const chosenPlaylistIds = ['37i9dQZF1DX2apWzyECwyZ', '37i9dQZF1DWY7IeIP1cdjF', '37i9dQZF1DX10zKzsJ2jva', '37i9dQZF1DXb1fcDuOYLYU' ];
+const puroLatinoPlaylistIds = ['37i9dQZF1DX2apWzyECwyZ', '37i9dQZF1DWY7IeIP1cdjF', '37i9dQZF1DX10zKzsJ2jva', '37i9dQZF1DXb1fcDuOYLYU' ];
+const focusPlaylistIds =['37i9dQZF1DWWn6teJIIcfG','37i9dQZF1DX3DZBe6wPMXo', '37i9dQZF1DWWTdxbiocWOL', '37i9dQZF1DX5trt9i14X7j'];
 
-//sendPlaylistsToFirebase(chosenPlaylistIds, 'Puro Latino');
+//CAUTION: FUNCTION CALL BELOW SENDS INFO DIRECTLY TO DB!!
+//sendPlaylistsToFirebase(focusPlaylistIds, 'Focus');
 
 

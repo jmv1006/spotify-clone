@@ -15,9 +15,12 @@
 }
 
 #mainContentWrapper {
-    width: 96%;
-    min-height: 53rem;
+    max-width: 95%;
     height: auto;
-    border: 2px solid red;
+    height: auto;
     font-family: 'Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
 }
