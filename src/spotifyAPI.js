@@ -7,7 +7,7 @@ let s = new Spotify();
 let spotifyApi = new SpotifyWebApi();
 
 //update this
-spotifyApi.setAccessToken('BQC_ma18Z_ZySro9SLwoSbv9ubAibD-Pg84JyAPQOln_WNhl0a7vMquzQ8I8rBZbKxe_leHOnYwBWu39N1JLPzwD_ZtKK6JKnggcbt1I7XOUI1hW-TBPVMl-_j5kLaTNd69dKZE');
+spotifyApi.setAccessToken('BQAwsRDUrZNg_TZZqoqKV2TuZhmp6yqVguSnB5RZAmDoNCVc7Vxx3eqFIfhGXKBbpG13Y9w6qWtmuPsvWV_U_a20JmsDy-dB8tNpB0ukY6c7KXRM7DCEtFX78w6qfVqc71pX4mk');
 
 
 function getPlaylist (playlistId) {
@@ -25,19 +25,38 @@ function sendPlaylistsToFirebase(ids, name) {
     });
 
     function addToArr(playlist) {
-        console.log(playlist)
+        console.log(playlist.tracks.items)
+
+        const tracks = [];
+
+        playlist.tracks.items.map(trackObj => {
+
+            const mappedArtists = trackObj.track.artists.map((artist) => {
+                return artist.name;
+            });
+
+            let trackObject = {
+                name: trackObj.track.name,
+                artists: mappedArtists,
+                image: trackObj.track.album.images[0].url,
+                duration: trackObj.track.duration_ms
+            };
+            tracks.push(trackObject);
+        })
 
         let tempPlaylist = {
             name: playlist.name,
             description: playlist.description,
             image: playlist.images[0].url,
-            id: playlist.id
+            id: playlist.id,
+            tracks: tracks
         }
 
         playlists.push(tempPlaylist);
 
         if(playlists.length === playlistIds.length) {
             addADoc(`${name}`, playlists);
+            //console.log(playlists);
         }
     };
 };
@@ -46,8 +65,8 @@ const puroLatinoPlaylistIds = ['37i9dQZF1DX2apWzyECwyZ', '37i9dQZF1DWY7IeIP1cdjF
 const focusPlaylistIds =['37i9dQZF1DWWn6teJIIcfG','37i9dQZF1DX3DZBe6wPMXo', '37i9dQZF1DWWTdxbiocWOL', '37i9dQZF1DX5trt9i14X7j', '37i9dQZF1DWZeKCadgRdKQ', '37i9dQZF1DX4sWSpwq3LiO'];
 const workoutPlaylistIds = ['37i9dQZF1DX76Wlfdnj7AP', '37i9dQZF1DX5gQonLbZD9s', '37i9dQZF1DX76t638V6CA8', '37i9dQZF1DWSJHnPb1f0X3', '37i9dQZF1DX8CwbNGNKurt', '37i9dQZF1DWYNSm3Z3MxiM'];
 const studentPlaylistIds = ['37i9dQZF1DX3csziQj0d5b', '37i9dQZF1DX8OR0U4UGusN', '37i9dQZF1DWSP55jZj2ES3', '37i9dQZF1DWZwtERXCS82H', '37i9dQZF1DWVtHcSjp0LID', '37i9dQZF1DX8NTLI2TtZa6'];
-
+const testPlaylist = ['37i9dQZF1DX2apWzyECwyZ']
 //CAUTION: FUNCTION CALL BELOW SENDS INFO DIRECTLY TO DB!! ensure name parameter matches the name of the playlist in the db
-//sendPlaylistsToFirebase(workoutPlaylistIds, 'Workout');
+sendPlaylistsToFirebase(testPlaylist, 'Test');
 
 
