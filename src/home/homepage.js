@@ -24,7 +24,7 @@ const Home = () => {
 
     //sets up a category display for each category in DB
     const categoriesToDisplay = categories.map((category, index) => 
-        <CategoryDisplay key={index} playlistIds={category.playlists} name={category.name}/>
+        <CategoryDisplay key={index} playlists={category.playlists} name={category.name}/>
     );
 
     return(

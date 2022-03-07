@@ -34,6 +34,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+async function addADoc(name, playlists) {
+  await setDoc(doc(db, 'categories', `${name}`), {
+    name: name,
+    playlists: playlists
+  });
+};
 
 async function getCategories(db) {
   const categoriesRef = collection(db, "categories");
@@ -42,4 +48,4 @@ async function getCategories(db) {
   return categoriesRetrieved;
 }
 
-export { db, getCategories }
+export { db, getCategories, addADoc };

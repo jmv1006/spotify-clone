@@ -7,12 +7,14 @@ const CategoryDisplay = (props) => {
     const [playlists, setPlaylists] = useState([]);
 
     useEffect(() => {
-        const playlistIds = props.playlistIds;
-
-        const fetchPlaylistInfo = playlistIds.map((id) => {
-            getPlaylist(id).then((playlist) => addToState(playlist));
-
+        const playlists = props.playlists;
+        console.log(playlists);
+        
+        
+        const fetchPlaylistInfo = playlists.map((playlist) => {
+           addToState(playlist);
         })
+        
 
         function addToState(playlist) {
             setPlaylists(oldArr => [...oldArr, playlist])
@@ -23,7 +25,7 @@ const CategoryDisplay = (props) => {
     const playlistsToDisplay = playlists.map((playlist, index) => 
         <div className='playlistCard' key={index}>
             <div className='playlistImgContainer'>
-                <img className='playlistImg' src={playlist.images[0].url}></img>
+                <img className='playlistImg' src={playlist.image}></img>
             </div>
             <div className='playlistTitleAndDescContainer'>
                 <div className='playlistTitle'>{playlist.name}</div>

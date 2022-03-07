@@ -12,7 +12,6 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1.5rem;
-    overflow: auto;
 }
 
 #mainContentWrapper {
@@ -20,6 +19,5 @@
     min-height: 53rem;
     height: auto;
     border: 2px solid red;
-    overflow-y: auto;
     font-family: 'Gothic', sans-serif;
 }
