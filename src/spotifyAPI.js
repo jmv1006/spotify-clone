@@ -7,7 +7,7 @@ let s = new Spotify();
 let spotifyApi = new SpotifyWebApi();
 
 //update this
-spotifyApi.setAccessToken('BQAwsRDUrZNg_TZZqoqKV2TuZhmp6yqVguSnB5RZAmDoNCVc7Vxx3eqFIfhGXKBbpG13Y9w6qWtmuPsvWV_U_a20JmsDy-dB8tNpB0ukY6c7KXRM7DCEtFX78w6qfVqc71pX4mk');
+spotifyApi.setAccessToken('BQCJ_KCDwveencLh8BPiFuu7GTwpRMdMubdUQhOYPWwnJjx6EHo7eM2tkClhtMhb_1JNoJkpbCnobEXVnmPof3QNuI2SxF2_fiD-CMuQSdzfvudAktfwJdu9kfoXS4HHkvEF-Po');
 
 
 function getPlaylist (playlistId) {
@@ -25,7 +25,6 @@ function sendPlaylistsToFirebase(ids, name) {
     });
 
     function addToArr(playlist) {
-        console.log(playlist.tracks.items)
 
         const tracks = [];
 
@@ -39,7 +38,8 @@ function sendPlaylistsToFirebase(ids, name) {
                 name: trackObj.track.name,
                 artists: mappedArtists,
                 image: trackObj.track.album.images[0].url,
-                duration: trackObj.track.duration_ms
+                duration: trackObj.track.duration_ms,
+                albumName: trackObj.track.album.name
             };
             tracks.push(trackObject);
         })
@@ -55,8 +55,8 @@ function sendPlaylistsToFirebase(ids, name) {
         playlists.push(tempPlaylist);
 
         if(playlists.length === playlistIds.length) {
-            addADoc(`${name}`, playlists);
-            //console.log(playlists);
+            //addADoc(`${name}`, playlists);
+          //console.log(playlists);
         }
     };
 };
@@ -66,6 +66,6 @@ const focusPlaylistIds =['37i9dQZF1DWWn6teJIIcfG','37i9dQZF1DX3DZBe6wPMXo', '37i
 const workoutPlaylistIds = ['37i9dQZF1DX76Wlfdnj7AP', '37i9dQZF1DX5gQonLbZD9s', '37i9dQZF1DX76t638V6CA8', '37i9dQZF1DWSJHnPb1f0X3', '37i9dQZF1DX8CwbNGNKurt', '37i9dQZF1DWYNSm3Z3MxiM'];
 const studentPlaylistIds = ['37i9dQZF1DX3csziQj0d5b', '37i9dQZF1DX8OR0U4UGusN', '37i9dQZF1DWSP55jZj2ES3', '37i9dQZF1DWZwtERXCS82H', '37i9dQZF1DWVtHcSjp0LID', '37i9dQZF1DX8NTLI2TtZa6'];
 //CAUTION: FUNCTION CALL BELOW SENDS INFO DIRECTLY TO DB!! ensure name parameter matches the name of the playlist in the db
-//sendPlaylistsToFirebase(workoutPlaylistIds, 'Workout');
+sendPlaylistsToFirebase(puroLatinoPlaylistIds, 'Puro Latino');
 
 

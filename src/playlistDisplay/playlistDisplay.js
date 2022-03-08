@@ -48,6 +48,13 @@ const PlaylistDisplay = () => {
                 </div>
             </div>
             <div className="tracksContainer">
+                <div className="tracksDisplayHeader">
+                    <div className="songAndNumContainer">
+                        <div className="trackNumberLabel">#</div>
+                        <div className="trackSongLabel">Song</div>
+                    </div>
+                    <div className="trackAlbumLabel">Album</div>
+                </div>
                 {tracks}
             </div>
         </div>

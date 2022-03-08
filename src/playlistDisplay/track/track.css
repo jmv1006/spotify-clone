@@ -1,9 +1,17 @@
+@media only screen and (max-width: 1000px) {
+    .albumContainer {
+        display: none !important;
+    }
+}
+
 .track {
     width: 99%;
     height: 3.5rem;
     display: flex;
     flex-direction: row;
     font-family: 'Gothic', sans-serif;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .track:hover {
@@ -15,11 +23,12 @@
     font-family: 'Gothic', sans-serif;
     cursor: pointer;
     opacity: .8;
+    justify-content: space-between;
 }
 
 .trackNum {
     width: 1.5rem;
-    color: white;
+    color: #B3B3B3;
 }
 .trackLeftSide {
     width: auto;
@@ -51,4 +60,11 @@
     width: auto;
     color: #B3B3B3;
     font-size: .75rem;
+}
+
+.albumContainer {
+    width: auto;
+    height: auto;
+    color: #B3B3B3;
+    font-size: .85rem;
 }

@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import './track.css'
 
 const Track = (props) => {
 
+    const [albumName, setAlbumName] = useState('');
     let track = props.track;    
 
     const mappedArtists = track.artists.map((artist) => {
@@ -12,8 +14,18 @@ const Track = (props) => {
         } else {
             return `${artist}`
         }
-        
     })
+
+    useEffect(() => {
+        if(track.albumName === track.name) {
+            setAlbumName(oldName => 'Single')
+        } else {
+            setAlbumName(oldName => track.albumName)
+        };
+
+    }, [])
+    
+
 
     return (
         <div className="track" key={track.duration}>
@@ -26,6 +38,10 @@ const Track = (props) => {
                     <div className="songTitle">{track.name}</div>
                     <div className="songArtists">{mappedArtists}</div>
                 </div>
+            </div>
+
+            <div className='albumContainer'>
+                {albumName}
             </div>
         </div>
     )

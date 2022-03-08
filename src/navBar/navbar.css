@@ -60,3 +60,7 @@
     color: white;
     cursor: pointer;
 }
+
+.navButtonLink {
+    text-decoration: none;
+}
