@@ -2,14 +2,22 @@ import { useEffect, useState } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import Track from "./track/track";
 import './playlist.css'
+import { getAuth } from 'firebase/auth';
 
 const PlaylistDisplay = () => {
     const [categories, setCategories] = useOutletContext();
     const [playlist, setPlaylist] = useState({});
     const [tracksLoaded, setTracksLoaded] = useState(false);
+    const [uid, setUid] = useState('');
+
     let params = useParams();
     let tracks;
-    //const backgroundImage = playlist.image
+
+
+    useEffect(() => {
+        const auhtentication = getAuth();
+        setUid(auhtentication.currentUser.uid);
+    }, [])
 
     useEffect(() => {
         categories.map((category) => {
@@ -29,7 +37,7 @@ const PlaylistDisplay = () => {
 
     if(tracksLoaded) {
         tracks = playlist.tracks.map((track, index) =>
-            <Track track={track} number={index + 1} key={track.name}/>
+            <Track uid={uid} track={track} number={index + 1} key={track.name} />
         );
     };
    

@@ -15,7 +15,10 @@ import {
     doc,
     serverTimestamp,
     getDoc,
-    getDocs
+    getDocs,
+    arrayUnion,
+    arrayRemove,
+    where
   } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -44,7 +47,6 @@ async function addADoc(name, playlists) {
     name: name,
     playlists: playlists
   });
-  
 };
 
 async function getCategories(db) {
@@ -55,12 +57,50 @@ async function getCategories(db) {
 }
 
 async function saveUserToDb(user) {
-  await setDoc(doc(db, 'users', `${user.uid}`), {
-    name: user.displayName,
-    email: user.email,
-    uid: user.uid
-  });
+  const docRef = doc(db, 'users', `${user.uid}`);
+  const docSnap = await getDoc(docRef);
+
+  //checking if user already exists
+  if (docSnap.exists()) {
+    //user exists
+  } else {
+    await setDoc(doc(db, 'users', `${user.uid}`), {
+      name: user.displayName,
+      email: user.email,
+      uid: user.uid,
+      likedSongs: []
+    });
+  }
   return user;
 }
 
-export { db, getCategories, addADoc, saveUserToDb, auth, provider };
+async function addLikedSongToDB(userId, track) {
+  const userDocRef = doc(db, 'users', `${userId}`);
+
+  await updateDoc(userDocRef, {
+    likedSongs: arrayUnion(track)
+  });
+};
+
+async function deleteLikedSongFromDB(userId, track) {
+  const userDocRef = doc(db, 'users', `${userId}`);
+
+  await updateDoc(userDocRef, {
+    likedSongs: arrayRemove(track)
+  });
+};
+
+async function checkIfTrackIsLiked(userId) {
+  const docRef = doc(db, 'users', `${userId}`);
+  const docSnap = await getDoc(docRef);
+
+  if(docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    //
+  }
+};
+
+
+
+export { db, getCategories, addADoc, saveUserToDb, auth, provider, addLikedSongToDB, deleteLikedSongFromDB, checkIfTrackIsLiked };

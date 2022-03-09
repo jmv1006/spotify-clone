@@ -1,21 +1,30 @@
 import NavBar from "../navBar/navBar";
-import { useEffect } from "react";
-import getPlaylist from "../spotifyAPI";
 import Home from "../home/homepage";
 import SignInPage from "../signInPage/signIn";
 import './app.css'
+import { useState } from 'react';
 
 const App = () => {
-  
-  useEffect(() => {
-    //getPlaylist('37i9dQZF1DX2apWzyECwyZ').then((playlist) => console.log(playlist));
-  }, []);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const setLoggedIn = () => {
+    setIsLoggedIn(true)
+  };
 
   return(
-    <div id='mainApp'>
-      {/*<NavBar />
-      <Home />*/}
-      <SignInPage />
+    <div id='mainApp'> 
+          { isLoggedIn ? 
+          <div id="mainApp">
+            <NavBar /> 
+            <Home />
+          </div>
+          :
+          
+          <SignInPage  logUserIn={setLoggedIn} /> 
+        } 
+          
+     {/*} <SignInPage  /> */} 
     </div>
   )
 }

@@ -21,7 +21,9 @@ const NavBar = () => {
             </div>
             <div className='navContainer'>
                 <div className='navButton'>Create Playlist</div>
-                <div className='navButton'>Liked Songs</div>
+                <Link className='navButtonLink' to='/likedsongs'>
+                    <div className='navButton'>Liked Songs</div>
+                </Link>
             </div>
         </div>
     )

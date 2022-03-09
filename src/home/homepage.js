@@ -5,9 +5,11 @@ import Footer from '../footer/footer';
 import CategoryDisplay from '../categoryDisplay/categoryDisplay';
 import './homepage.css'
 import { Outlet } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 
-const Home = () => {
+const Home = (props) => {
     const [categories, setCategories] = useState([]);
+
 
     useEffect(() => {
         getCategories(db).then((categories) => importData(categories));
@@ -22,7 +24,13 @@ const Home = () => {
             setCategories(oldArr => [...oldArr, importedCategory])
         };
 
+        //const auhtentication = getAuth();
+        //console.log('mounted');
+        //console.log(auhtentication);
+        
+
     }, []);
+
 
     //sets up a category display for each category in DB
     const categoriesToDisplay = categories.map((category, index) => 

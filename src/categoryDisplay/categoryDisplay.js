@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './categorydisplay.css'
-import getPlaylist from '../spotifyAPI';
 import { Link } from 'react-router-dom';
 
 const CategoryDisplay = (props) => {

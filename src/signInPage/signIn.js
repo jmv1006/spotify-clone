@@ -2,11 +2,10 @@ import './signIn.css'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { saveUserToDb, auth, provider } from '../firebase'
 import blackLogo from '../assets/images/spotifyblack.png';
-import { useState } from 'react';
 
-const SignInPage = () => {
 
-    const [user, setUser] = useState('');
+const SignInPage = (props) => {
+    
 
     async function signIn() {
         signInWithPopup(auth, provider)
@@ -17,7 +16,7 @@ const SignInPage = () => {
             // The signed-in user info.
             const user = result.user;
             saveUserToDb(user);
-            setUser(user);
+            props.logUserIn();
             // ...
           }).catch((error) => {
             // Handle Errors here.
