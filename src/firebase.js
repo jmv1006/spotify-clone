@@ -1,5 +1,7 @@
 // Import the functions you need from the SDKs you need
+import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import {
     getFirestore,
     collection,
@@ -30,9 +32,12 @@ const firebaseConfig = {
   measurementId: "G-KD643FMKL8"
 };
 
-// Initialize Firebase
+// Initialize Firebase & Authentication Provider
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
+
 
 async function addADoc(name, playlists) {
   await setDoc(doc(db, 'categories', `${name}`), {
@@ -49,4 +54,13 @@ async function getCategories(db) {
   return categoriesRetrieved;
 }
 
-export { db, getCategories, addADoc };
+async function saveUserToDb(user) {
+  await setDoc(doc(db, 'users', `${user.uid}`), {
+    name: user.displayName,
+    email: user.email,
+    uid: user.uid
+  });
+  return user;
+}
+
+export { db, getCategories, addADoc, saveUserToDb, auth, provider };

@@ -2,6 +2,7 @@ import NavBar from "../navBar/navBar";
 import { useEffect } from "react";
 import getPlaylist from "../spotifyAPI";
 import Home from "../home/homepage";
+import SignInPage from "../signInPage/signIn";
 import './app.css'
 
 const App = () => {
@@ -12,8 +13,9 @@ const App = () => {
 
   return(
     <div id='mainApp'>
-      <NavBar />
-      <Home />
+      {/*<NavBar />
+      <Home />*/}
+      <SignInPage />
     </div>
   )
 }
