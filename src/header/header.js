@@ -1,6 +1,15 @@
 import './header.css';
+import { signUserOut } from '../firebase';
+const Header = (props) => {
 
-const Header = () => {
+    const signOutUser = () => {
+        signUserOut();
+        props.logOutUser();
+    };
+
+    const signUserIn = () => {
+        props.logOutGuest()
+    };
 
     return(
         <div id='headerContainer'>
@@ -9,10 +18,15 @@ const Header = () => {
                 <div className='topLink'>SUPPORT</div>
                 <div className='topLink'>DOWNLOAD</div>
             </div>
-            <div id='topButtonsContainer'>
-                <div id='signUp'>SIGN UP</div>
-                <div id='login'>LOG IN</div>
-            </div>
+            {props.isLoggedIn ? 
+                <div id='topButtonsContainer'>
+                    <div onClick={signOutUser} id='login'>Sign Out</div>
+                </div>
+            :
+                <div id='topButtonsContainer'>
+                    <div onClick={signUserIn} id='login'>LOG IN</div>
+                </div>
+            }
         </div>
     )
 }

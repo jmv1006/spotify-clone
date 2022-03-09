@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import './track.css'
 import { addLikedSongToDB, deleteLikedSongFromDB, checkIfTrackIsLiked } from '../../firebase';
+import { getAuth } from 'firebase/auth';
+
 
 const Track = (props) => {
 
     const [albumName, setAlbumName] = useState('');
     const [isLiked, setIsLiked] = useState(false);
     const [likedTracks, setLikedTracks] = useState([]);
+    const [guestLoggedIn,setGuestLoggedIn] = useState(false);
 
     let track = props.track;    
 
@@ -28,23 +31,30 @@ const Track = (props) => {
         };
 
         //check if track exists in users liked
-        checkIfTrackIsLiked(props.uid).then((data) => addToLikedTracks(data.likedSongs));
+        const auhtentication = getAuth();
+        if(auhtentication.currentUser == null) {
+            setGuestLoggedIn(true);
+        } else {
+            checkIfTrackIsLiked(props.uid).then((data) => addToLikedTracks(data.likedSongs));
 
-        function addToLikedTracks(arr) {
+            function addToLikedTracks(arr) {
             setLikedTracks(arr);
-        };
+            };
+        }
+        
 
     }, [])
 
     useEffect(() => {
         //checking if user liked tracks includes track, and if it does, updating it's button to say 'unlike'
+
        if(likedTracks.some(e => e.name === props.track.name)) {
            setIsLiked(true);
        };
 
     }, [likedTracks])
     
-    const likeTrack = () => {
+    const likeTrack = (e) => {
         if(isLiked) {
             setIsLiked(false)
             deleteLikedSongFromDB(props.uid, props.track)
@@ -68,7 +78,10 @@ const Track = (props) => {
                     <div className="songTitle">{track.name}</div>
                     <div className="songArtists">{mappedArtists}</div>
                 </div>
-                <button onClick={likeTrack}>{isLiked ? 'Unlike' : 'Like'}</button>
+                {guestLoggedIn ?
+                null:
+                <button className='likeBtn' onClick={likeTrack}>{isLiked ? 'Unlike' : 'Like'}</button>
+                }
             </div>
 
             <div className='albumContainer'>

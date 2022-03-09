@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signOut } from "firebase/auth";
 import {
     getFirestore,
     collection,
@@ -101,6 +101,16 @@ async function checkIfTrackIsLiked(userId) {
   }
 };
 
+async function signUserOut() {
+  signOut(auth).then(() => {
+    console.log('signOutSuccesful')
+  }).catch((error) => {
+    // An error happened.
+  });
+}
 
 
-export { db, getCategories, addADoc, saveUserToDb, auth, provider, addLikedSongToDB, deleteLikedSongFromDB, checkIfTrackIsLiked };
+
+
+
+export { db, getCategories, addADoc, saveUserToDb, auth, provider, addLikedSongToDB, deleteLikedSongFromDB, checkIfTrackIsLiked, signUserOut };

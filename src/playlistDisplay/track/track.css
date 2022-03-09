@@ -68,3 +68,25 @@
     color: #B3B3B3;
     font-size: .85rem;
 }
+
+.likeBtn {
+    background-color: transparent;
+    color: #B3B3B3;
+    font-family: 'Gothic', sans-serif;
+    border: none;
+    width: auto;
+    height: auto;
+    padding: .25rem;
+    cursor: pointer;
+}
+
+.likeBtn:hover {
+    background-color: transparent;
+    color: #B3B3B3;
+    font-family: 'Gothic', sans-serif;
+    border: none;
+    width: auto;
+    height: auto;
+    padding: .3rem;
+    cursor: pointer;
+}

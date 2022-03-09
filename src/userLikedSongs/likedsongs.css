@@ -1,9 +1,10 @@
 #likedSongsPageContainer {
-    border: 2px solid blue;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+    background-color: #1D1D1D;
+    color: white;
 }

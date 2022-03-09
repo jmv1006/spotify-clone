@@ -28,7 +28,12 @@ const SignInPage = (props) => {
             const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
           });
-      };
+    };
+
+    const logInGuest = () => {
+        props.logInGuest();
+    }
+
 
     return(
         <div className="signInPageContainer">
@@ -38,6 +43,7 @@ const SignInPage = (props) => {
             <div className='googleSignInContainer'>
                 Sign In Below
                 <button onClick={signIn} className='signInButton'>Sign In With Google</button>
+                <button onClick={logInGuest} className='signInButton'>Sign In As Guest</button>
             </div>
         </div>
     );

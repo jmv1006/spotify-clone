@@ -23,12 +23,7 @@ const Home = (props) => {
         function extractData(importedCategory) {
             setCategories(oldArr => [...oldArr, importedCategory])
         };
-
-        //const auhtentication = getAuth();
-        //console.log('mounted');
-        //console.log(auhtentication);
         
-
     }, []);
 
 
@@ -39,7 +34,7 @@ const Home = (props) => {
 
     return(
         <div id='pageContainer'>
-            <Header />
+            <Header logOutGuest={props.logOutGuest} logOutUser={props.logOutUser} isLoggedIn={props.isLoggedIn}/>
             <Outlet context={[categories, setCategories]} />
             <Footer />
         </div>

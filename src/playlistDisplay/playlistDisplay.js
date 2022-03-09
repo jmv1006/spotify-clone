@@ -16,7 +16,11 @@ const PlaylistDisplay = () => {
 
     useEffect(() => {
         const auhtentication = getAuth();
-        setUid(auhtentication.currentUser.uid);
+        if(auhtentication.currentUser == null) {
+            //do nothing
+        } else {
+            setUid(auhtentication.currentUser.uid);
+        }
     }, [])
 
     useEffect(() => {

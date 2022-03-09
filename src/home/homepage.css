@@ -28,3 +28,9 @@
     font-family: 'Gothic', sans-serif;
     padding: 1rem;
 }
+
+#welcomeMessage {
+    color: white;
+    width: 100%;
+    font-size: 1.25rem;
+}
