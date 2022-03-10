@@ -8,7 +8,6 @@ const LikedSongs = () => {
 
     const [likedSongs, setLikedSongs] = useState([]);
     const [uid, setUid] = useState('');
-    const [userName, setUserName] = useState('');
 
     useEffect(() => {
         importDataFromFirestore()
@@ -21,7 +20,6 @@ const LikedSongs = () => {
     const importDataFromFirestore = () => {
 
         if(loggedInStatus) {
-            setUserName(userInfo.displayName);
 
             const userId = userInfo.uid;
             getLikedTracks(userId).then(data => addLikedSongsToState(data.likedSongs))
@@ -29,6 +27,7 @@ const LikedSongs = () => {
             function addLikedSongsToState(arr) {
                 setLikedSongs(arr);
             }
+
             setUid(userInfo.uid);
 
         } else {
