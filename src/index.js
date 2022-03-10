@@ -18,7 +18,6 @@ ReactDOM.render(
             <Route path='/playlist' element={<PlaylistPageContainer />}>
                 <Route path=':playlistId' element={<PlaylistDisplay />} />
             </Route>
-            {/*Route for user saved songs*/}
             <Route path='/likedsongs' element={<LikedSongs /> } />
           </Route>
         </Routes>

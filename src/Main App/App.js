@@ -29,18 +29,6 @@ const App = () => {
 
   return(
     <div id='mainApp'> 
-      {/*
-          { isLoggedIn ? 
-          <div id="mainApp">
-            <NavBar /> 
-            <Home isLoggedIn={isLoggedIn}/>
-          </div>
-          :
-          
-          <SignInPage logInGuest={logInGuest}  logUserIn={setLoggedIn} /> 
-        } 
-      */}
-          
         {
           isGuestLoggedIn || isLoggedIn ?
           <div id="mainApp">

@@ -18,7 +18,6 @@ import {
     getDocs,
     arrayUnion,
     arrayRemove,
-    where
   } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -101,9 +100,20 @@ async function checkIfTrackIsLiked(userId) {
   }
 };
 
+async function getLikedTracks(userId) {
+  const docRef = doc(db, 'users', `${userId}`);
+  const docSnap = await getDoc(docRef);
+
+  if(docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    //
+  }
+};
+
 async function signUserOut() {
   signOut(auth).then(() => {
-    console.log('signOutSuccesful')
+    //sign out succesful
   }).catch((error) => {
     // An error happened.
   });
@@ -113,4 +123,4 @@ async function signUserOut() {
 
 
 
-export { db, getCategories, addADoc, saveUserToDb, auth, provider, addLikedSongToDB, deleteLikedSongFromDB, checkIfTrackIsLiked, signUserOut };
+export { db, getCategories, addADoc, saveUserToDb, auth, provider, addLikedSongToDB, deleteLikedSongFromDB, checkIfTrackIsLiked, signUserOut, getLikedTracks };
