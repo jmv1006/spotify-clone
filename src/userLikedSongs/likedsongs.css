@@ -1,7 +1,7 @@
 #likedSongsPageContainer {
     width: 100%;
-    min-height: 50%;
     height: auto;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
