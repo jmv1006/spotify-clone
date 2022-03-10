@@ -2,25 +2,27 @@ import { useEffect, useState } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import Track from "./track/track";
 import './playlist.css'
-import { getAuth } from 'firebase/auth';
 
 const PlaylistDisplay = () => {
-    const [categories, setCategories] = useOutletContext();
+    const { cats, loggedInStatus, userInfo } = useOutletContext();
+    const [categories, setCategories] = cats;
+    
     const [playlist, setPlaylist] = useState({});
     const [tracksLoaded, setTracksLoaded] = useState(false);
     const [uid, setUid] = useState('');
 
     let params = useParams();
+
     let tracks;
 
-
     useEffect(() => {
-        const auhtentication = getAuth();
-        if(auhtentication.currentUser == null) {
-            //do nothing
+       
+        if(loggedInStatus) {
+            setUid(userInfo.uid);
         } else {
-            setUid(auhtentication.currentUser.uid);
+            //do nothing
         }
+
     }, [])
 
     useEffect(() => {

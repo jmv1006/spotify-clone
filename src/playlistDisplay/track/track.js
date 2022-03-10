@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import './track.css'
 import { addLikedSongToDB, deleteLikedSongFromDB, checkIfTrackIsLiked } from '../../firebase';
-import { getAuth } from 'firebase/auth';
+import { useOutletContext } from 'react-router-dom';
 
 
 const Track = (props) => {
+    const { cats, loggedInStatus, userInfo } = useOutletContext();
 
     const [albumName, setAlbumName] = useState('');
     const [isLiked, setIsLiked] = useState(false);
     const [likedTracks, setLikedTracks] = useState([]);
-    const [guestLoggedIn,setGuestLoggedIn] = useState(false);
 
     let track = props.track;    
 
@@ -31,15 +31,15 @@ const Track = (props) => {
         };
 
         //check if track exists in users liked
-        const auhtentication = getAuth();
-        if(auhtentication.currentUser == null) {
-            setGuestLoggedIn(true);
-        } else {
+      
+        if(loggedInStatus) {
             checkIfTrackIsLiked(props.uid).then((data) => addToLikedTracks(data.likedSongs));
 
             function addToLikedTracks(arr) {
             setLikedTracks(arr);
             };
+        } else {
+            //do nothing
         }
         
 
@@ -78,9 +78,10 @@ const Track = (props) => {
                     <div className="songTitle">{track.name}</div>
                     <div className="songArtists">{mappedArtists}</div>
                 </div>
-                {guestLoggedIn ?
-                null:
+                {loggedInStatus ?
                 <button className='likeBtn' onClick={likeTrack}>{isLiked ? 'Unlike' : 'Like'}</button>
+                :
+                null
                 }
             </div>
 

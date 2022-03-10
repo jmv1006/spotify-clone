@@ -2,41 +2,57 @@ import NavBar from "../navBar/navBar";
 import Home from "../home/homepage";
 import SignInPage from "../signInPage/signIn";
 import './app.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { signUserOut } from '../firebase';
 
 const App = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isGuestLoggedIn, setGuestLoggedIn] = useState(false);
+  const [userLoginStatus, setUserLoginStatus] = useState(false);
+  const [guestLoginStatus, setGuestLoginStatus] = useState(false);
+  const [currentUserInfo, setCurrentUserInfo] = useState({});
 
-  const setLoggedIn = () => {
-    setIsLoggedIn(true)
+  const handleUserLogin = () => {
+    if(userLoginStatus) {
+      setUserLoginStatus(false);
+    } else {
+      setUserLoginStatus(true);
+    }
   };
 
-  const setLoggedOut = () => {
-    setIsLoggedIn(false)
+  const handleGuestLogin = () => {
+    if(guestLoginStatus) {
+      setGuestLoginStatus(false);
+    } else {
+      setGuestLoginStatus(true);
+    }
+  }
+
+  const saveUserInfo = (userInfo) => {
+    let newUser = {
+      displayName: userInfo.displayName,
+      email: userInfo.email,
+      uid: userInfo.uid
+    };
+    setCurrentUserInfo(newUser);
   };
 
-  const logInGuest = () => {
-    setGuestLoggedIn(true);
-  };
-
-  const logOutGuest = () => {
-    setGuestLoggedIn(false);
-  };
-
+  useEffect(() => {
+    signUserOut();
+  }, []);
 
 
   return(
     <div id='mainApp'> 
         {
-          isGuestLoggedIn || isLoggedIn ?
+          guestLoginStatus || userLoginStatus ?
           <div id="mainApp">
+            
             <NavBar /> 
-            <Home logOutGuest={logOutGuest} logOutUser={setLoggedOut} isLoggedIn={isLoggedIn}/>
+            <Home userInfo={currentUserInfo} isUserLoggedIn={userLoginStatus} handleUserLoginStatus={handleUserLogin} handleGuestLoginStatus={handleGuestLogin}/>
+       
           </div>
           :
-          <SignInPage logInGuest={logInGuest} logUserIn={setLoggedIn} /> 
+          <SignInPage saveUserInfo={saveUserInfo} logInGuest={handleGuestLogin} logInUser={handleUserLogin} /> 
         }
     </div>
   )

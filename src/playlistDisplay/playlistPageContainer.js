@@ -2,10 +2,10 @@ import { Outlet, useOutletContext } from "react-router-dom";
 import './playlist.css'
 
 const PlaylistPageContainer = () => {
-    const [categories, setCategories] = useOutletContext();
+    const { cats, loggedInStatus, userInfo } = useOutletContext();
 
     return(
-        <Outlet context={[categories, setCategories]}/>
+        <Outlet context={{ cats, loggedInStatus, userInfo }}/>
     )
 }
 

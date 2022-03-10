@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import './likedsongs.css'
-import { getAuth } from 'firebase/auth';
-import { getLikedTracks } from '../firebase';
-import { deleteLikedSongFromDB } from '../firebase';
+import { getLikedTracks, deleteLikedSongFromDB } from '../firebase';
+import { useOutletContext } from 'react-router-dom';
 
 const LikedSongs = () => {
+    const { cats, loggedInStatus, userInfo } = useOutletContext();
+
     const [likedSongs, setLikedSongs] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [uid, setUid] = useState('');
     const [userName, setUserName] = useState('');
 
@@ -19,21 +19,20 @@ const LikedSongs = () => {
     }, [likedSongs]);
 
     const importDataFromFirestore = () => {
-        const auhtentication = getAuth();
-        if(auhtentication.currentUser === null) {
-            setIsLoggedIn(false);
-        } else {
-            setIsLoggedIn(true);
 
-            setUserName(auhtentication.currentUser.displayName);
+        if(loggedInStatus) {
+            setUserName(userInfo.displayName);
 
-            const userId = auhtentication.currentUser.uid;
+            const userId = userInfo.uid;
             getLikedTracks(userId).then(data => addLikedSongsToState(data.likedSongs))
 
             function addLikedSongsToState(arr) {
                 setLikedSongs(arr);
             }
-            setUid(userId);
+            setUid(userInfo.uid);
+
+        } else {
+            //do nothing
         };
     }
 
@@ -64,9 +63,9 @@ const LikedSongs = () => {
 
     return(
         <div id="likedSongsPageContainer">
-            {isLoggedIn ?
+            {loggedInStatus ?
                <div className='likedSongsDisplay'> 
-                   Here are your liked songs, {userName}.
+                   Here are your liked songs, {userInfo.displayName}.
                    {likedSongs.length === 0 ? <div>Like Some Songs To See Them Here.</div> : null}
                    <div className='songsContainer'>
                         {displayLikedSongs}
@@ -74,6 +73,7 @@ const LikedSongs = () => {
                </div>
                
                 :
+                
                <div> Log in to save songs! </div>
             }
         </div>

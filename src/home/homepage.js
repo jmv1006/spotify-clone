@@ -9,6 +9,7 @@ import { getAuth } from 'firebase/auth';
 
 const Home = (props) => {
     const [categories, setCategories] = useState([]);
+    
 
 
     useEffect(() => {
@@ -34,8 +35,8 @@ const Home = (props) => {
 
     return(
         <div id='pageContainer'>
-            <Header logOutGuest={props.logOutGuest} logOutUser={props.logOutUser} isLoggedIn={props.isLoggedIn}/>
-            <Outlet context={[categories, setCategories]} />
+            <Header isUserLoggedIn={props.isUserLoggedIn} handleUser={props.handleUserLoginStatus} handleGuest={props.handleGuestLoginStatus}/>
+            <Outlet context={{cats: [categories, setCategories], loggedInStatus: props.isUserLoggedIn, userInfo: props.userInfo}} />
             <Footer />
         </div>
     )

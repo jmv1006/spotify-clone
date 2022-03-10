@@ -2,6 +2,8 @@ import './signIn.css'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { saveUserToDb, auth, provider } from '../firebase'
 import blackLogo from '../assets/images/spotifyblack.png';
+import { useEffect } from 'react';
+import { signUserOut } from '../firebase';
 
 
 const SignInPage = (props) => {
@@ -16,7 +18,8 @@ const SignInPage = (props) => {
             // The signed-in user info.
             const user = result.user;
             saveUserToDb(user);
-            props.logUserIn();
+            props.logInUser();
+            props.saveUserInfo(user);
             // ...
           }).catch((error) => {
             // Handle Errors here.
@@ -34,6 +37,9 @@ const SignInPage = (props) => {
         props.logInGuest();
     }
 
+    useEffect(() => {
+        signUserOut().then(console.log('signed out'))
+    }, [])
 
     return(
         <div className="signInPageContainer">
