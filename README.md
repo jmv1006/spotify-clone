@@ -8,18 +8,8 @@ This is a small-scale replica of the Spotify desktop website. It was built using
 ## Features
 - A sleek home page showcasing different categories with corresponding playlists.
 - Each displayed playlist has its own individual page displaying the tracks within it, as well as artist and album names.
-- Feel free to add your own categories and playlist with the use of the Spotify Web API! 
-
-## Adding A New Category
-In order to add a new category, you must:
-- Create and intialize a Firebase project using Firestore.
-- Retrieve your own Token from the [Spotify For Developers Website](https://developer.spotify.com).
-- Access the `spotifyAPI.js` JavaScript file and insert your token in the `spotifyApi.setAccessToken` function.
-- Create an array containing the ids of the playlists you would like in your category. (Each Spotify playlist has an individual id that lives in the page's url after /playlist/).
-- Uncomment and call the `sendPlaylistsToFirebase` function with the array of playlists as the first parameter and a name for the category as the second parameter.
-- Ensure to make the line containing the `sendPlaylistsToFirebase` a comment again so that it is not called when not needed.
-- Done!
-
+- Ability for users to login with Google and save songs!
+- Due to the nature of how Spotify requires that a user is signed in with a PREMIUM account in order for them to use playback, playback is not enabled for this clone. Yet.
 
 ## Available Scripts
 
